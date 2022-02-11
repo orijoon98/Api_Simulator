@@ -1,0 +1,19 @@
+{
+  "name": "api_simulator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/orijoon98/Api_Simulator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/orijoon98/Api_Simulator/issues"
+  },
+  "homepage": "https://github.com/orijoon98/Api_Simulator#readme"
+}
