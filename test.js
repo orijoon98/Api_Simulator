@@ -16,6 +16,9 @@ exports.run = async () => {
         tests[i] = env.variable(tests[i]);
         tests[i] = env.random(tests[i]);
         switch (tests[i]['method']) {
+          case 'GET':
+            await http.get(tests[i]);
+            break;
           case 'POST':
             await http.post(tests[i]);
             break;
@@ -37,6 +40,9 @@ exports.run = async () => {
       test = env.variable(test);
       test = env.random(test);
       switch (test['method']) {
+        case 'GET':
+          await http.get(test);
+          break;
         case 'POST':
           await http.post(test);
           break;

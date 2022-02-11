@@ -3,6 +3,49 @@ const log = require('tracer').colorConsole({
   format: '{{message}}',
 });
 
+exports.get = (test) => {
+  let uri = test['uri'];
+  let query = test['query'];
+  let keys = [];
+  let url = uri;
+  for (key in query) {
+    keys.push(key);
+  }
+  for (let i = 0; i < keys.length; i++) {
+    if (i == 0) url += '?';
+    url += keys[i];
+    url += '=';
+    url += query[keys[i]];
+    if (i != keys.length - 1) url += '&';
+  }
+  console.log(url);
+  const options = {
+    uri: url,
+  };
+
+  return new Promise((resolve, reject) => {
+    try {
+      request.get(options, (error, response, responseBody) => {
+        if (error != null) {
+          log.error('Request: ' + uri + ' GET');
+          log.error('Query: ' + JSON.stringify(query));
+          log.error('Error: ' + error);
+          log.error('\n');
+          resolve();
+        } else {
+          log.info('Request: ' + uri + ' GET');
+          log.info('Query: ' + JSON.stringify(query));
+          log.info('Response: ' + JSON.stringify(responseBody));
+          log.info('\n');
+          resolve();
+        }
+      });
+    } catch (e) {
+      reject();
+    }
+  });
+};
+
 exports.post = (test) => {
   let uri = test['uri'];
   let body = test['body'];
