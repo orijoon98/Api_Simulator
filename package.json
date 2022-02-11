@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/orijoon98/Api_Simulator/issues"
   },
-  "homepage": "https://github.com/orijoon98/Api_Simulator#readme"
+  "homepage": "https://github.com/orijoon98/Api_Simulator#readme",
+  "dependencies": {
+    "request": "^2.88.2",
+    "tracer": "^1.1.5"
+  }
 }
