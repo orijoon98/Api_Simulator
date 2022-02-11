@@ -8,10 +8,10 @@ let preset = script.handlePreset(script.fileData('./preset.json'));
 exports.run = async () => {
   for (let i = 0; i < testArray.length; i++) {
     test = testArray[i];
-    if (test['preset'] != null) {
+    if (test['simulation'] != null) {
       // preset에 등록한 테스트인 경우
-      let name = test['preset'];
-      let tests = preset[name];
+      let name = test['simulation'];
+      let tests = preset['simulation'][name];
       for (let i = 0; i < tests.length; i++) {
         tests[i] = env.variable(tests[i]);
         tests[i] = env.random(tests[i]);

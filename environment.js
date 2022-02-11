@@ -13,7 +13,7 @@ exports.variable = (json) => {
   }
   for (let i = 0; i < variable.length; i++) {
     let from = '(' + variable[i] + ')';
-    let to = preset[variable[i]];
+    let to = preset['variable'][variable[i]];
     data = data.replace(from, to);
   }
   return JSON.parse(data);
