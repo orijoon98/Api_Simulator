@@ -18,7 +18,6 @@ exports.get = (test) => {
     url += query[keys[i]];
     if (i != keys.length - 1) url += '&';
   }
-  console.log(url);
   const options = {
     uri: url,
   };
@@ -26,14 +25,17 @@ exports.get = (test) => {
   return new Promise((resolve, reject) => {
     try {
       request.get(options, (error, response, responseBody) => {
-        if (error != null) {
-          log.error('Request: ' + uri + ' GET');
-          log.error('Query: ' + JSON.stringify(query));
+        let status = Math.floor(response.statusCode / 100);
+        if (error != null || status != 2) {
+          log.error('Request: ' + url + ' GET');
+          log.error('Status: ' + response.statusCode);
           log.error('Error: ' + error);
+          log.error('Response: ' + JSON.stringify(responseBody));
           log.error('\n');
           resolve();
         } else {
           log.info('Request: ' + uri + ' GET');
+          log.info('Status: ' + response.statusCode);
           log.info('Query: ' + JSON.stringify(query));
           log.info('Response: ' + JSON.stringify(responseBody));
           log.info('\n');
@@ -59,14 +61,18 @@ exports.post = (test) => {
   return new Promise((resolve, reject) => {
     try {
       request.post(options, (error, response, responseBody) => {
-        if (error != null) {
+        let status = Math.floor(response.statusCode / 100);
+        if (error != null || status != 2) {
           log.error('Request: ' + uri + ' POST');
+          log.error('Status: ' + response.statusCode);
           log.error('Body: ' + JSON.stringify(body));
           log.error('Error: ' + error);
+          log.error('Response: ' + JSON.stringify(responseBody));
           log.error('\n');
           resolve();
         } else {
           log.info('Request: ' + uri + ' POST');
+          log.info('Status: ' + response.statusCode);
           log.info('Body: ' + JSON.stringify(body));
           log.info('Response: ' + JSON.stringify(responseBody));
           log.info('\n');
@@ -92,14 +98,18 @@ exports.patch = (test) => {
   return new Promise((resolve, reject) => {
     try {
       request.patch(options, (error, response, responseBody) => {
-        if (error != null) {
+        let status = Math.floor(response.statusCode / 100);
+        if (error != null || status != 2) {
           log.error('Request: ' + uri + ' PATCH');
+          log.error('Status: ' + response.statusCode);
           log.error('Body: ' + JSON.stringify(body));
           log.error('Error: ' + error);
+          log.error('Response: ' + JSON.stringify(responseBody));
           log.error('\n');
           resolve();
         } else {
           log.info('Request: ' + uri + ' PATCH');
+          log.info('Status: ' + response.statusCode);
           log.info('Body: ' + JSON.stringify(body));
           log.info('Response: ' + JSON.stringify(responseBody));
           log.info('\n');
@@ -125,14 +135,18 @@ exports.put = (test) => {
   return new Promise((resolve, reject) => {
     try {
       request.put(options, (error, response, responseBody) => {
-        if (error != null) {
+        let status = Math.floor(response.statusCode / 100);
+        if (error != null || status != 2) {
           log.error('Request: ' + uri + ' PUT');
+          log.error('Status: ' + response.statusCode);
           log.error('Body: ' + JSON.stringify(body));
           log.error('Error: ' + error);
+          log.error('Response: ' + JSON.stringify(responseBody));
           log.error('\n');
           resolve();
         } else {
           log.info('Request: ' + uri + ' PUT');
+          log.info('Status: ' + response.statusCode);
           log.info('Body: ' + JSON.stringify(body));
           log.info('Response: ' + JSON.stringify(responseBody));
           log.info('\n');
@@ -158,14 +172,18 @@ exports.delete = (test) => {
   return new Promise((resolve, reject) => {
     try {
       request.delete(options, (error, response, responseBody) => {
-        if (error != null) {
+        let status = Math.floor(response.statusCode / 100);
+        if (error != null || status != 2) {
           log.error('Request: ' + uri + ' DELETE');
+          log.error('Status: ' + response.statusCode);
           log.error('Body: ' + JSON.stringify(body));
           log.error('Error: ' + error);
+          log.error('Response: ' + JSON.stringify(responseBody));
           log.error('\n');
           resolve();
         } else {
           log.info('Request: ' + uri + ' DELETE');
+          log.info('Status: ' + response.statusCode);
           log.info('Body: ' + JSON.stringify(body));
           log.info('Response: ' + JSON.stringify(responseBody));
           log.info('\n');
