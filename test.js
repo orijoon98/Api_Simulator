@@ -8,34 +8,7 @@ let preset = script.handlePreset(script.fileData('./preset.json'));
 exports.run = async () => {
   for (let i = 0; i < testArray.length; i++) {
     test = testArray[i];
-    if (test['simulation'] != null) {
-      // simulation에 등록한 테스트인 경우
-      let name = test['simulation'];
-      let tests = preset['simulation'][name];
-      for (let i = 0; i < tests.length; i++) {
-        let a = env.variable(tests[i]);
-        let b = env.random(a);
-        switch (tests[i]['method']) {
-          case 'GET':
-            await http.get(b);
-            break;
-          case 'POST':
-            await http.post(b);
-            break;
-          case 'PATCH':
-            await http.patch(b);
-            break;
-          case 'PUT':
-            await http.put(b);
-            break;
-          case 'DELETE':
-            await http.delete(b);
-            break;
-          default:
-            break;
-        }
-      }
-    } else if (test['preset'] != null) {
+    if (test['preset'] != null) {
       let name = handleNameParams(test['preset'])[0];
       let params = handleNameParams(test['preset'])[1];
       let tests = preset['preset'][name];
