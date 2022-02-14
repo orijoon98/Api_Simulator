@@ -30,23 +30,23 @@ npm start
 
 ```json
 {
-	"test": [	
-		{
-			"uri": "http://localhost:8080/api/login",
-			"method": "POST",
-			"body": {
-				"username": "user1",
-				"password": "password1"
-			}
-		},
-		{
-			"uri": "http://localhost:8080/api/info",
-			"method": "GET",
-			"query": {
-				"userId": "1"
-			}
-		}
-	]
+  "test": [	
+    {
+      "uri": "http://localhost:8080/api/login",
+      "method": "POST",
+      "body": {
+        "username": "user1",
+        "password": "password1"
+      }
+    },
+    {
+      "uri": "http://localhost:8080/api/info",
+      "method": "GET",
+      "query": {
+        "userId": "1"
+      }
+    }
+  ]
 }
 ```
 
@@ -72,23 +72,23 @@ npm start
 ```json
 // script.json
 {
-	"test": [	
-		{
-			"uri": "(host)/api/login", // preset.json - variable의 host 사용
-			"method": "POST",
-			"body": {
-				"username": "user1",
-				"password": "password1"
-			}
-		},
-		{
-			"uri": "(host)/api/info", // preset.json - variable의 host 사용
-			"method": "GET",
-			"query": {
-				"userId": "1"
-			}
-		}
-	]
+  "test": [	
+    {
+      "uri": "(host)/api/login", // preset.json - variable의 host 사용
+      "method": "POST",
+      "body": {
+        "username": "user1",
+        "password": "password1"
+      }
+    },
+    {
+      "uri": "(host)/api/info", // preset.json - variable의 host 사용
+      "method": "GET",
+      "query": {
+        "userId": "1"
+      }
+    }
+  ]
 }
 ```
 
@@ -105,23 +105,23 @@ npm start
     "host": "http://localhost:8080"
   },
   "preset": {
-	  "presetExample": [	
-			{
-				"uri": "(host)/api/login", // preset.json - variable의 host 사용
-				"method": "POST",
-				"body": {
-					"username": "user1",
-					"password": "password1"
-				}
-			},
-			{
-				"uri": "(host)/api/info", // preset.json - variable의 host 사용
-				"method": "GET",
-				"query": {
-					"userId": "1"
-				}
-			}
-		]
+    "presetExample": [	
+      {
+        "uri": "(host)/api/login", // preset.json - variable의 host 사용
+        "method": "POST",
+	"body": {
+	  "username": "user1",
+	  "password": "password1"
+      	}
+      },
+      {
+	"uri": "(host)/api/info", // preset.json - variable의 host 사용
+	"method": "GET",
+	"query": {
+	  "userId": "1"
+	}
+      }
+    ]
   }
 }
 ```
@@ -129,9 +129,9 @@ npm start
 ```json
 // script.json
 {
-	"test": [	
-		{ "preset": "presetExample" } // preset.json - preset에 등록한 이름으로 호출
-	]
+  "test": [	
+    { "preset": "presetExample" } // preset.json - preset에 등록한 이름으로 호출
+  ]
 }
 ```
 
@@ -152,23 +152,23 @@ npm start
     "host": "http://localhost:8080"
   },
   "preset": {
-	  "presetExample": [	
-			{
-				"uri": "(host)/api/login", // preset.json - variable의 host 사용
-				"method": "POST",
-				"body": {
-					"username": "(params:0)", // presetExample 0인덱스 파라미터 사용
-					"password": "(params:1)" // presetExample 1인덱스 파라미터 사용
-				}
-			},
-			{
-				"uri": "(host)/api/info", // preset.json - variable의 host 사용
-				"method": "GET",
-				"query": {
-					"userId": "(params:2)" // presetExample 2인덱스 파라미터 사용
-				}
-			}
-		]
+    "presetExample": [	
+      {
+        "uri": "(host)/api/login", // preset.json - variable의 host 사용
+	"method": "POST",
+	"body": {
+	  "username": "(params:0)", // presetExample 0인덱스 파라미터 사용
+	  "password": "(params:1)" // presetExample 1인덱스 파라미터 사용
+	}
+      },
+      {
+	"uri": "(host)/api/info", // preset.json - variable의 host 사용
+	"method": "GET",
+	"query": {
+	  "userId": "(params:2)" // presetExample 2인덱스 파라미터 사용
+	}
+      }
+    ]
   }
 }
 ```
@@ -176,13 +176,13 @@ npm start
 ```json
 // script.json
 {
-	"test": [	
-		{ "preset": "presetExample(string:user1, string:password1, number:1)" } 
-		// preset.json - preset에 등록한 이름으로 호출
-		// (params:0) = "user1"
-		// (params:1) = "password1"
-		// (params:2) = 1
-	]
+  "test": [	
+    { "preset": "presetExample(string:user1, string:password1, number:1)" } 
+    // preset.json - preset에 등록한 이름으로 호출
+    // (params:0) = "user1"
+    // (params:1) = "password1"
+    // (params:2) = 1
+  ]
 }
 ```
 
@@ -200,26 +200,27 @@ npm start
 ```json
 // script.json
 {
-	"test": [	
-	{
+  "test": [	
+    {
       "uri": "(host)/eth_call",
       "method": "POST",
       "body": {
         "jsonrpc": "2.0",
         "method": "eth_call",
         "params": [
-					{
-						"from": "(random:hex:20)",
-						"to": "(random:hex:20)",
-						"gas": "(random:quantity:100)",
-						"gasPrice": "(random:quantity:100)",
-						"value": "(random:quantity:10)",
-						"data": "(random:string:30)",
-					},
-					"(random:tag)"
-				],
+	  {
+	    "from": "(random:hex:20)",
+	    "to": "(random:hex:20)",
+	    "gas": "(random:quantity:100)",
+	    "gasPrice": "(random:quantity:100)",
+	    "value": "(random:quantity:10)",
+	    "data": "(random:string:30)",
+	  },
+	  "(random:tag)"
+        ],
         "id": 1
       }
-	}
+    }
+  ]
 }
 ```
