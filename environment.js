@@ -59,6 +59,39 @@ exports.random = (json) => {
   return JSON.parse(data);
 };
 
+exports.params = (json, params) => {
+  let data = JSON.stringify(json);
+  let arr = getVariables(json);
+  let paramsList = [];
+  for (let i = 0; i < arr.length; i++) {
+    let splits = arr[i].split(':');
+    if (splits[0] == 'params') paramsList.push(arr[i]);
+  }
+  for (let i = 0; i < paramsList.length; i++) {
+    let splits = paramsList[i].split(':');
+    let paramSplits = params[parseInt(splits[1])].split(':');
+    let from, to;
+    switch (paramSplits[0]) {
+      case 'string':
+        from = '(' + paramsList[i] + ')';
+        to = paramSplits[1];
+        break;
+      case 'number':
+        from = '"(' + paramsList[i] + ')"';
+        to = paramSplits[1];
+      case 'bool':
+        from = '"(' + paramsList[i] + ')"';
+        to = paramSplits[1];
+        break;
+        break;
+      default:
+        break;
+    }
+    data = data.replace(from, to);
+  }
+  return JSON.parse(data);
+};
+
 const getVariables = (json) => {
   let data = JSON.stringify(json);
   let bracket = 0;
